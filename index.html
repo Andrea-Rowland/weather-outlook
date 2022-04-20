@@ -10,7 +10,29 @@
     <!-- FontAwesome CDN link for icons -->
     <script src="https://kit.fontawesome.com/981fdddf67.js" crossorigin="anonymous"></script>
 </head>
-<body>
+<body class="flex-column min-100-vh">
+    <header class="hero">
+        <h1 class="app-title">Weather Dashboard</h1>
+    </header>
+
+<main class="flex-row justify-space-between">
+    <div class="col-4">
+
+        <div class="card">
+            <h3 class="card-header text-uppercase">Search for a City:</h3>
+            <form id="user-form" class="card-body">
+                <input name="city" id="city" type="text" autofocus="true" class="form-input" /></br>
+                <button type="submit" class="btn">Search</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="col-4">
+        <div class="past-searches"
+        
+    </div>
+
+</main>
 
 
 <script src="./assets/script.js"></script>
