@@ -1,0 +1,19 @@
+/* .page-border {
+    border-radius: .5;
+    border-color: black;
+    border-width: medium;
+} */
+
+.hero {
+background-color: blue;    
+}
+
+.app-title {
+    color: white;
+    align-items: center;
+    justify-content: center;
+}
+
+.weather-info {
+    
+}
