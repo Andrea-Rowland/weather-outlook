@@ -1,8 +1,8 @@
-/* .page-border {
+.page-border {
     border-radius: .5;
     border-color: black;
     border-width: medium;
-} */
+}
 
 .hero {
 background-color: blue;    
@@ -14,6 +14,17 @@ background-color: blue;
     justify-content: center;
 }
 
-.weather-info {
-    
+.btn {
+    background-color: rgb(30, 185, 241);
+    color: white;
+    border: none;
+    border-bottom: thin gray;
+    border-radius: .5;
 }
+
+.weather-info {
+    border: black;
+    border-width: thin;
+    color: rgb(232, 11, 11);
+}
+
