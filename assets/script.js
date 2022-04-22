@@ -1,6 +1,11 @@
 var repoContainerEl = document.querySelector("#repos-container");
 var cityInputEl = document.querySelector("#city");
 
+var formSubmitHandler = function(event) {
+    //prevent page from refreshing
+    event.preventDefault();
+}
+
 var getCityRepos = function(city) {
     // format the api url
     var apiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}" + city;
@@ -18,3 +23,4 @@ var getCityRepos = function(city) {
         }
     })
 }
+
