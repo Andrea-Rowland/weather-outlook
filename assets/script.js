@@ -1,33 +1,3 @@
-// api key: da44a8d6e886088fec1a833225aa1e58
-
-// var repoContainerEl = document.querySelector("#repos-container");
-// var cityInputEl = document.querySelector("#city");
-
-// var formSubmitHandler = function(event) {
-//     //prevent page from refreshing
-//     event.preventDefault();
-// }
-
-
-
-// var getCityRepos = function(city) {
-//     // format the api url
-//     var apiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}" + city;
-
-//     // make a get request to url
-//     fetch(apiUrl)
-//     .then(function(response) {
-//         // request was successful
-//         if (response.ok) {
-//             console.log(response);
-//             response.json().then(function(data) {
-//                 console.log(data);
-//                 displayRepos(data, city);
-//             });
-//         }
-//     })
-// }
-
 //Selectors
 const submitBtn = document.querySelector("#submit-btn");
 const cityEl = document.querySelector("#city");
@@ -35,13 +5,14 @@ const tempEl = document.querySelector("#temp");
 const windEl = document.querySelector("#wind");
 const humidityEl = document.querySelector("#humidity");
 const uvIndexEl = document.querySelector("#uv-index");
+const apiKey = "&appid=da44a8d6e886088fec1a833225aa1e58";
 
 //variables
 
 
 function getWeather() {
     var city = cityEl.value.trim();
-    var url1 = "https://api.openweathermap.org/data/2.5/weather?q="+ city +"&appid=da44a8d6e886088fec1a833225aa1e58"
+    var url1 = "https://api.openweathermap.org/data/2.5/weather?q="+ city + apiKey
 
     fetch(url1).then(function(res){
         return res.json();
@@ -56,6 +27,19 @@ function getWeather() {
             windEl.textContent = "Wind: " + data.current.wind_speed + "MPH"
             humidityEl.textContent = "Humidity: " + data.current.humidity + "%"
             uvIndexEl.textContent = "UV Index: " + data.current.uvi
+
+            var counter = 1
+                      
+
+            for (let i = 0; i < data.daily.length; i++) {
+                
+                var humidity = data.daily[i].humidity;
+                var wind = data.daily[i].wind_speed;
+                var temp = data.daily[i].temp.day;
+                var date = moment(data.daily[i].dt_txt).format("l");
+                var weatherIcon = data.daily[i].weather[0].icon;
+                console.log(date, weatherIcon, temp, humidity, wind);    
+            }
         })
     })
 }
