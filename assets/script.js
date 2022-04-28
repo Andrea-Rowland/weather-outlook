@@ -47,7 +47,9 @@ function getWeather() {
                 <div class="card-body">
                   <h5 class="card-title">${date}</h5>
                   <img src="http://openweathermap.org/img/wn/${weatherIcon}@2x.png" alt="icons">
-                  <p class="card-text">${temp}</p>
+                  <p class="card-text">Temp: ${temp}</p>
+                  <p class="card-text">Wind: ${wind} MPH</p>
+                  <p class="card-text">Humidity: ${humidity} %</p>
                 
                 </div>
               </div>`;
