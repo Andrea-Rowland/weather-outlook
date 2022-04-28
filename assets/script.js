@@ -5,6 +5,7 @@ const tempEl = document.querySelector("#temp");
 const windEl = document.querySelector("#wind");
 const humidityEl = document.querySelector("#humidity");
 const uvIndexEl = document.querySelector("#uv-index");
+const daysEl = document.querySelector('#five-day');
 const apiKey = "&appid=da44a8d6e886088fec1a833225aa1e58";
 
 //variables
@@ -31,18 +32,34 @@ function getWeather() {
             var counter = 1
                       
 
-            for (let i = 0; i < data.daily.length; i++) {
+            
+            for (let i = 1; i < 6; i++) {
                 
                 var humidity = data.daily[i].humidity;
                 var wind = data.daily[i].wind_speed;
                 var temp = data.daily[i].temp.day;
-                var date = moment(data.daily[i].dt_txt).format("l");
+                var date = moment().add(i, 'days').format("L");
                 var weatherIcon = data.daily[i].weather[0].icon;
-                console.log(date, weatherIcon, temp, humidity, wind);    
+                console.log(date, weatherIcon, temp, humidity, wind);  
+                
+
+                var card = `<div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">${date}</h5>
+                  <img src="http://openweathermap.org/img/wn/${weatherIcon}@2x.png" alt="icons">
+                  <p class="card-text">${temp}</p>
+                
+                </div>
+              </div>`;
+
+                daysEl.insertAdjacentHTML('beforeend', card);
+
             }
         })
     })
 }
+
+
 
 
 //event listners
