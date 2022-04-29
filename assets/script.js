@@ -1,6 +1,7 @@
 //Selectors
 const submitBtn = document.querySelector("#submit-btn");
 const cityEl = document.querySelector("#city");
+const currentDateEl = document.querySelector("#current-date");
 const tempEl = document.querySelector("#temp");
 const windEl = document.querySelector("#wind");
 const humidityEl = document.querySelector("#humidity");
@@ -13,6 +14,8 @@ const apiKey = "&appid=da44a8d6e886088fec1a833225aa1e58";
 
 function getWeather() {
     var city = cityEl.value.trim();
+    console.log(city);
+    var currentDate = moment().format('MMMM Do YYYY');
     var url1 = "https://api.openweathermap.org/data/2.5/weather?q="+ city + apiKey
 
     fetch(url1).then(function(res){
@@ -24,10 +27,27 @@ function getWeather() {
         }).then(function(data){
             console.log(data);
             // everything else will go in here
+            cityEl.textContent = city
+            currentDateEl.textContent = "(" + currentDate + ") -"
             tempEl.textContent = "Temp: " + data.current.temp + "F"
             windEl.textContent = "Wind: " + data.current.wind_speed + "MPH"
             humidityEl.textContent = "Humidity: " + data.current.humidity + "%"
             uvIndexEl.textContent = "UV Index: " + data.current.uvi
+
+            // if(uvIndexEl <= 2) {
+            //     $("#uv-index").removeClass("bg-danger");
+            //     $("#uv-index").removeClass("bg-warning");
+            //     $("#uv-index").addClass("bg-success");
+            // } else if(uvIndexEl >= 2 && uvIndexEl <= 7) {
+            //     $("#uv-index").removeClass("bg-success");
+            //     $("#uv-index").removeClass("bg-danger");
+            //     $("#uv-index").addClass("bg-warning");
+            // } else {
+            //     $("#uv-index").removeClass("bg-success");
+            //     $("#uv-index").removeClass("bg-warning");
+            //     $("#uv-index").addClass("bg-danger");
+            // }
+
 
             var counter = 1
                       
@@ -60,7 +80,6 @@ function getWeather() {
         })
     })
 }
-
 
 
 
