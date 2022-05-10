@@ -5,7 +5,10 @@
 }
 
 .hero {
-background-color: blue;    
+background-color: blue; 
+display: flex;  
+justify-content: center; 
+margin: 10pt;
 }
 
 .app-title {
@@ -14,20 +17,43 @@ background-color: blue;
     justify-content: center;
 }
 
+.container-1 {
+    margin: 20pt;
+}
+.card {
+    margin: 10pt;
+    padding: 10pt;
+    align-items:flex-start;
+    justify-content: center;
+    width: 95%;
+    height: 95%;
+}
+
 .btn {
     background-color: rgb(30, 185, 241);
-    color: white;
-    border: none;
+    color: dimgray;
+    border:dimgrey;
     border-bottom: thin gray;
     border-radius: .5;
 }
-
 .weather-info {
-    border: black;
-    border-width: thin;
-    color: black;
+    margin: 20pt;
+    padding: 10pt;
+    background-color: rgb(226, 219, 219);
+    display: flex;
+
 }
+
 
 #five-day {
     display: flex;
+}
+
+.past-searches {
+    display: flex;
+    background-color: rgb(226, 219, 219);
+    margin: 10pt;
+    width: 95%;
+    height: 60%;
+   
 }
