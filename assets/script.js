@@ -8,12 +8,16 @@ const humidityEl = document.querySelector("#humidity");
 const uvIndexEl = document.querySelector("#uv-index");
 const daysEl = document.querySelector('#five-day');
 const apiKey = "&appid=da44a8d6e886088fec1a833225aa1e58";
+const searchedCities = document.getElementById("searchedCities");
 
-//variables
+
+
 
 
 function getWeather() {
     var city = cityEl.value.trim();
+    searchHistory(city);
+
     console.log(city);
     var currentDate = moment().format('MMMM Do YYYY');
     var url1 = "https://api.openweathermap.org/data/2.5/weather?q="+ city + apiKey
@@ -33,26 +37,11 @@ function getWeather() {
             windEl.textContent = "Wind: " + data.current.wind_speed + "MPH"
             humidityEl.textContent = "Humidity: " + data.current.humidity + "%"
             uvIndexEl.textContent = "UV Index: " + data.current.uvi
-
-            // if(uvIndexEl <= 2) {
-            //     $("#uv-index").removeClass("bg-danger");
-            //     $("#uv-index").removeClass("bg-warning");
-            //     $("#uv-index").addClass("bg-success");
-            // } else if(uvIndexEl >= 2 && uvIndexEl <= 7) {
-            //     $("#uv-index").removeClass("bg-success");
-            //     $("#uv-index").removeClass("bg-danger");
-            //     $("#uv-index").addClass("bg-warning");
-            // } else {
-            //     $("#uv-index").removeClass("bg-success");
-            //     $("#uv-index").removeClass("bg-warning");
-            //     $("#uv-index").addClass("bg-danger");
-            // }
-
-
-            var counter = 1
-                      
-
             
+                      
+            daysEl.innerHTML = '';
+            
+
             for (let i = 1; i < 6; i++) {
                 
                 var humidity = data.daily[i].humidity;
@@ -63,7 +52,7 @@ function getWeather() {
                 console.log(date, weatherIcon, temp, humidity, wind);  
                 
 
-                var card = `<div class="card" style="width: 18rem;">
+                var card = `<div class="card days" style="width: 18rem;">
                 <div class="card-body">
                   <h5 class="card-title">${date}</h5>
                   <img src="http://openweathermap.org/img/wn/${weatherIcon}@2x.png" alt="icons">
@@ -80,6 +69,17 @@ function getWeather() {
         })
     })
 }
+
+
+function searchHistory(city) {
+    var allCities = JSON.parse(localStorage.getItem("cities")) || [];
+
+    allCities.push(city);
+    localStorage.setItem("cities", JSON.stringify(allCities));
+
+    }
+
+
 
 
 
