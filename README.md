@@ -13,3 +13,4 @@ This weather dashboard is designed to help the user search for weather forecasts
 ## Web Link:
 
 ## Screenshot:
+![weather-outlook-Screenshot](./assets/images/screenshot.JPG)
